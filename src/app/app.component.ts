@@ -31,29 +31,29 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy(): void {
-    const seft = this;
-    seft.destroy$.next();
-    seft.destroy$.complete();
+    const me = this;
+    me.destroy$.next();
+    me.destroy$.complete();
   }
 
   ngOnInit(): void {
-    const seft = this;
-    seft.buildForm();
+    const me = this;
+    me.buildForm();
   }
 
   private buildForm() {
-    const seft = this;
-    seft.formGroup = seft.builder.group(
+    const me = this;
+    me.formGroup = me.builder.group(
       {
-        [seft.fieldNameKeys.username]: [{
+        [me.fieldNameKeys.username]: [{
           value: '',
           disabled: false
         }, [
           Validators.required,
           Validators.minLength(2)
         ]],
-        password: ['', [Validators.required, seft.validateMarchingPassword(seft.fieldNameKeys)]],
-        confirmPassword: ['', [Validators.required, seft.validateMarchingPassword(seft.fieldNameKeys)]]
+        password: ['', [Validators.required, me.validateMarchingPassword(me.fieldNameKeys)]],
+        confirmPassword: ['', [Validators.required, me.validateMarchingPassword(me.fieldNameKeys)]]
       }
     );
   }
@@ -82,8 +82,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public getErrorField(fieldName: string): string[] {
-    const seft = this;
-    const errorObj = seft.formGroup.get(fieldName)?.errors;
+    const me = this;
+    const errorObj = me.formGroup.get(fieldName)?.errors;
     if (!errorObj) {
       return [];
     }
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     const listMsg = errorKeys.reduce(
       (res: string[], key: string) => {
-        const msg = seft.messageErrors[key];
+        const msg = me.messageErrors[key];
         res.push(msg);
         return res;
       }, []
@@ -103,8 +103,8 @@ export class AppComponent implements OnInit, OnDestroy {
   };
 
   public isInvalidControl(controlName: string) {
-    const seft = this;
-    const control = seft.formGroup.get(controlName);
+    const me = this;
+    const control = me.formGroup.get(controlName);
     if (!control) {
       return false;
     }
@@ -112,11 +112,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    const seft = this;
-    seft.formGroup.valueChanges.pipe(
-      takeUntil(seft.destroy$)
+
+  }
+
+  // sample use destroy
+  private useDestroy(): void {
+    const me = this;
+    me.formGroup.valueChanges.pipe(
+      takeUntil(me.destroy$)
     ).subscribe(
 
-    )
+    );
   }
 }
