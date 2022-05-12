@@ -52,8 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(2)
         ]],
-        password: ['', [Validators.required, me.validateMarchingPassword(me.fieldNameKeys)]],
-        confirmPassword: ['', [Validators.required, me.validateMarchingPassword(me.fieldNameKeys)]]
+        password: ['', [Validators.required, me.validateMatchingPassword(me.fieldNameKeys)]],
+        confirmPassword: ['', [Validators.required, me.validateMatchingPassword(me.fieldNameKeys)]]
       }
     );
   }
@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  private validateMarchingPassword(fieldNameKeys: any) {
+  private validateMatchingPassword(fieldNameKeys: any) {
     return (control: AbstractControl) => {
       if (!!control.parent?.controls) {
         const _formGroup = control.parent as FormGroup;
@@ -81,9 +81,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getErrorField(fieldName: string): string[] {
+  public getErrorByField(controlName: string): string[] {
     const me = this;
-    const errorObj = me.formGroup.get(fieldName)?.errors;
+    const errorObj = me.formGroup.get(controlName)?.errors;
     if (!errorObj) {
       return [];
     }
@@ -112,7 +112,24 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
+    const me = this;
+    // check valid form
+    const isValid = me.formGroup.valid;
+    if (!isValid) {
+      // show message invalid form
+      return;
+    }
+    // do something
+    // call request api
+    // 1. why we use getRawValue ?
+    // Retrieves all values regardless of disabled status. The value property is the best way to get the value of the group, because it excludes disabled controls in the FormGroup.
+    const valueForm = me.formGroup.getRawValue();
 
+
+    // 2. Usally use formGroup.value
+    const valueForm2 = me.formGroup.value;
+
+    // we should use getRawValue
   }
 
   // sample use destroy

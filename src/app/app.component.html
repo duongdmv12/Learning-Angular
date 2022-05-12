@@ -1,7 +1,7 @@
 <div *ngIf="!!formGroup" [formGroup]="formGroup">
   <input [formControlName]="fieldNameKeys.username" placeholder="username" type="text">
   <div *ngIf="isInvalidControl(fieldNameKeys.username)">
-    <ng-container *ngFor="let msg of getErrorField(fieldNameKeys.username)">
+    <ng-container *ngFor="let msg of getErrorByField(fieldNameKeys.username)">
       {{ msg }}
       <br>
     </ng-container>
