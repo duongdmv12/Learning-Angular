@@ -1,0 +1,9 @@
+<div class="list-doctors">
+  <ng-container *ngIf="!!items">
+    <div class="card" *ngFor="let item of items">
+      <div class="doctor-name">{{ item.name }}</div>
+      <div class="doctor-phone">{{ item.phone | phone:'vi' }}</div>
+      <div class="doctor-email">{{ item?.email }}</div>
+    </div>
+  </ng-container>
+</div>

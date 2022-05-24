@@ -1,12 +1,3 @@
-<div *ngIf="!!formGroup" [formGroup]="formGroup">
-  <input [formControlName]="fieldNameKeys.username" placeholder="username" type="text">
-  <div *ngIf="isInvalidControl(fieldNameKeys.username)">
-    <ng-container *ngFor="let msg of getErrorByField(fieldNameKeys.username)">
-      {{ msg }}
-      <br>
-    </ng-container>
-  </div>
-  <input [formControlName]="fieldNameKeys.password" placeholder="password" type="text">
-  <input [formControlName]="fieldNameKeys.confirmPassword" placeholder="confirmPassword" type="text">
-  <button (click)="onSubmit()">Submit</button>
-</div>
+<app-layout>
+  <router-outlet></router-outlet>
+</app-layout>
