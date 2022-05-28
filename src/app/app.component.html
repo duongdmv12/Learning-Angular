@@ -1,57 +1,16 @@
-<!-- The first way -->
-<!-- <div class="form">
-  <input  [(ngModel)]="model.username" placeholder="username" type="text">
-  <input [(ngModel)]="model.password" placeholder="password" type="text">
-  <input [(ngModel)]="model.confirmPassword" placeholder="confirmPassword" type="text">
-  <button (click)="onSubmit()">Submit</button>
-</div> -->
-
-<!-- <div class="form" [formGroup]="myForm">
-  <input [formControlName]="controlNames.username" placeholder="username" type="text">
-  <div *ngIf="isInvalidControl(controlNames.username)">
-    {{ getMsgErrorByControlName(controlNames.username) }}
+<div class="form" [formGroup]="myForm" style="display: flex; flex-direction: column">
+  <div class="form-control">
+    <input [innerMsg]="msgKeys" [formControlName]="controlNames.username" placeholder="username" type="text">
+  </div>
+  <div class="form-control">
+    <input [innerMsg]="msgKeys" [formControlName]="controlNames.password" placeholder="password" type="text">
+  </div>
+  <div class="form-control">
+    <input [innerMsg]="msgKeys" [formControlName]="controlNames.confirmPassword" placeholder="confirmPassword"
+      type="text">
   </div>
 
-
-  <input [formControlName]="controlNames.password" placeholder="password" type="text">
-  <div *ngIf="isInvalidControl(controlNames.password)">
-    {{ getMsgErrorByControlName(controlNames.password) }}
+  <div class="form-control">
+    <button (click)="onSubmitFormGroup()">Submit</button>
   </div>
-
-
-  <input [formControlName]="controlNames.confirmPassword" placeholder="confirmPassword" type="text">
-  <div *ngIf="isInvalidControl(controlNames.confirmPassword)">
-    {{ getMsgErrorByControlName(controlNames.confirmPassword) }}
-  </div>
-
-  <button (click)="onSubmitFormGroup()">Submit</button>
-</div> -->
-
-<div [formGroup]="myFormGroupArray" *ngIf="!!myFormGroupArray">
-  <ng-container *ngIf="!!getFormArray(controlNames.groups)">
-    <ng-container [formArrayName]="controlNames.groups"
-      *ngFor=" let control of getFormArray(controlNames.groups).controls; let i = index">
-      <div [formGroupName]="i">
-        <label for="">{{ i + 1 }}</label>
-        <div class="form">
-          <input [formControlName]="controlNames.username" placeholder="username" type="text">
-          <!-- <div *ngIf="isInvalidControl(controlNames.username)">
-            {{ getMsgErrorByControlName(controlNames.username) }}
-          </div> -->
-
-
-          <input [formControlName]="controlNames.password" placeholder="password" type="text">
-          <!-- <div *ngIf="isInvalidControl(controlNames.password)">
-            {{ getMsgErrorByControlName(controlNames.password) }}
-          </div> -->
-
-
-          <input [formControlName]="controlNames.confirmPassword" placeholder="confirmPassword" type="text">
-          <!-- <div *ngIf="isInvalidControl(controlNames.confirmPassword)">
-            {{ getMsgErrorByControlName(controlNames.confirmPassword) }}
-          </div> -->
-        </div>
-      </div>
-    </ng-container>
-  </ng-container>
 </div>
