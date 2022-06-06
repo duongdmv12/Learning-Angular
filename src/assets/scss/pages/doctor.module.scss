@@ -1,5 +1,57 @@
 .doctor-page {
   .doctor-list {
+    .doctor-item {
+      background: #293a58;
+      border-radius: 10px;
+      &__name {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        color: #ffffff;
+      }
+      &__address {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        /* identical to box height */
 
+        color: #7988a3;
+      }
+      &__position {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #ffffff;
+      }
+      &__phone {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        /* identical to box height */
+
+        color: #7988a3;
+      }
+      &__phone {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        /* identical to box height */
+
+        color: #7988a3;
+      }
+    }
+  }
+  .doctor-create {
   }
 }

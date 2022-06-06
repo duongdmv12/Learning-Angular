@@ -1,7 +1,10 @@
 export namespace DoctorModel {
   export interface DoctorInfo {
-    name: string;
-    phone: string;
+    avt?: string;
+    name?: string;
+    address?: string;
+    position?: string;
+    phone?: string;
     email?: string;
   }
 }

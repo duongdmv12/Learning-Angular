@@ -2,26 +2,41 @@
   {
     "name": "doctor1",
     "phone": "0321412412",
-    "email": "hello@gmail.com"
+    "email": "hello@gmail.com",
+    "avt": "assets/images/avt.svg",
+    "position": "Cardiologist",
+    "address": "MBBS, M.D of Medicine"
   },
   {
     "name": "doctor1",
     "phone": "0321412412",
-    "email": "hello@gmail.com"
+    "email": "hello@gmail.com",
+    "avt": "assets/images/avt.svg",
+    "position": "Cardiologist",
+    "address": "MBBS, M.D of Medicine"
   },
   {
     "name": "doctor1",
     "phone": "0321412412",
-    "email": "hello@gmail.com"
+    "email": "hello@gmail.com",
+    "avt": "assets/images/avt.svg",
+    "position": "Cardiologist",
+    "address": "MBBS, M.D of Medicine"
   },
   {
     "name": "doctor1",
     "phone": "0321412412",
-    "email": "hello@gmail.com"
+    "email": "hello@gmail.com",
+    "avt": "assets/images/avt.svg",
+    "position": "Cardiologist",
+    "address": "MBBS, M.D of Medicine"
   },
   {
     "name": "doctor1",
     "phone": "0321412412",
-    "email": "hello@gmail.com"
+    "email": "hello@gmail.com",
+    "avt": "assets/images/avt.svg",
+    "position": "Cardiologist",
+    "address": "MBBS, M.D of Medicine"
   }
 ]

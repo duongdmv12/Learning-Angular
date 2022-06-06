@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { IItemDoctor } from 'src/app/shared/models/doctor.model';
+import { DoctorModel } from 'src/app/shared/models/doctor.model';
 
 @Component({
   selector: 'app-doctor-list',
@@ -9,13 +9,12 @@ import { IItemDoctor } from 'src/app/shared/models/doctor.model';
   providers: []
 })
 export class DoctorListComponent implements OnInit {
+  data: DoctorModel.DoctorInfo[] = [];
 
-  public items!: IItemDoctor[];
-  @Input('items')
-  set dataItems(items: IItemDoctor[]) {
+  @Input()
+  set items(data: DoctorModel.DoctorInfo[]) {
     const me = this;
-    me.items = [...items];
-    me.items = me.items.map(val => val);
+    me.data = data || [];
   }
 
   constructor() { }

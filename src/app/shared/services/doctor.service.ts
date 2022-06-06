@@ -4,6 +4,7 @@ import { DoctorResponse } from './../models/response/doctor.response';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class DoctorService extends BaseService {
@@ -14,8 +15,13 @@ export class DoctorService extends BaseService {
 
   public getDoctors(): Observable<DoctorResponse.GetDoctors> {
     const me = this;
-    const uri = '/api/doctors';
-    return me.get(uri);
+    if (environment.mockApi) {
+      const url = 'assets/data/doctors.json';
+      return me.httpClient.get<DoctorResponse.GetDoctors>(url);
+    } else {
+      const uri = '/api/doctors';
+      return me.get(uri);
+    }
   }
 
   public createDoctor(request: DoctorRequest.CreateDoctor): Observable<DoctorResponse.CreateDoctor> {
