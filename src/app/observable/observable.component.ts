@@ -27,6 +27,11 @@ export class ObservableComponent implements OnInit {
     me.regisSearchEvent();
   }
 
+  /**
+   *  map, tap, filter, switchMap, mergeMap
+   *
+   */
+
   private regisSearchEvent(): void {
     const me = this;
     me.search$.pipe(

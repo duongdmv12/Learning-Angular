@@ -1,4 +1,4 @@
-<div class="form" [formGroup]="myForm" style="display: flex; flex-direction: column">
+<!-- <div class="form" [formGroup]="myForm" style="display: flex; flex-direction: column">
   <div class="form-control">
     <input [innerMsg]="msgKeys" [formControlName]="controlNames.username" placeholder="username" type="text">
   </div>
@@ -12,5 +12,36 @@
 
   <div class="form-control">
     <button (click)="onSubmitFormGroup()">Submit</button>
+  </div>
+</div> -->
+
+
+<div class="container-fuild row p-5" [formGroup]="myForm">
+  <div class="col-lg-12">
+    <div class="form-group">
+      <label for="">Username</label>
+      <input [formControlName]="controlNames.username" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="form-group">
+      <label for="">Password</label>
+      <input [innerMsg]="msgKeys" [formControlName]="controlNames.password" type="text" class="form-control">
+      <!-- <div class="message" *ngIf="myForm.get('password')?.errors &&myForm.get('password')?.touched">
+        myForm.get('password')?.errors
+      </div> -->
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="form-group">
+      <label for="">ConfirmPassword</label>
+      <input [formControlName]="controlNames.confirmPassword" type="text" class="form-control">
+      <div class="message" *ngIf="myForm.get('password')?.errors &&myForm.get('password')?.touched">
+       div element
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mt-4">
+    <button type="button" class="btn btn-outline-primary" (click)="onSubmitFormGroup()">Submit</button>
   </div>
 </div>

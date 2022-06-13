@@ -1,5 +1,5 @@
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -19,7 +19,8 @@ export class FormComponent implements OnInit {
 
   public msgKeys = {
     required: 'Please input data',
-    minlength: 'min length'
+    minlength: 'min length',
+    match: 'Not matching password'
   };
 
 
@@ -60,10 +61,45 @@ export class FormComponent implements OnInit {
     me.myForm = me.builder.group(
       {
         [me.controlNames.username]: ['', [Validators.required, Validators.minLength(10)]],
-        [me.controlNames.password]: ['', [Validators.required, Validators.minLength(10)]],
-        [me.controlNames.confirmPassword]: ['']
+        [me.controlNames.password]: ['', [Validators.required, me.validateMatchingPassword(me.controlNames)]],
+        [me.controlNames.confirmPassword]: ['', [Validators.required, me.validateMatchingPassword(me.controlNames)]]
+      },
+      {
+        validators: [
+
+        ]
       }
     );
+  }
+
+  private ways2() {
+    const me = this;
+    me.myForm.valueChanges.subscribe(
+      value => {
+        if (value.password === value.confirmPass) {
+          me.myForm.get('password')?.setErrors({abc: true}, { emitEvent: false});
+        }
+      }
+    );
+  }
+
+  private validateMatchingPassword(controlNames: { [prop: string]: string; }) {
+    return (control: AbstractControl) => {
+      if (!!control) {
+        const parent = control.parent as FormGroup;
+        if (!!parent) {
+          const valueForm = parent.getRawValue();
+          const passValue = valueForm[controlNames['password']];
+          const confirmPassValue = valueForm[controlNames['confirmPassword']];
+          if (!!passValue && !!confirmPassValue && passValue === confirmPassValue) {
+            return null;
+          }
+        }
+      }
+      return {
+        match: true
+      };
+    };
   }
 
 }
